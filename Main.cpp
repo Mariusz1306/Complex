@@ -84,7 +84,7 @@ int main(){
     t4 = t1 / t2;
     std::cout<<"t1 / t2: "<<t4<<std::endl;
     t4 = t1 / 10;
-    std::cout<<"t1 / 10: "<<t4<<std::endl;
+   std::cout<<"t1 / 10: "<<t4<<std::endl;
     t4 = 10 / t2;
     std::cout<<"10 / t2: "<<t4<<std::endl;
 

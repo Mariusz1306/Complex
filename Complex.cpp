@@ -13,65 +13,42 @@ complex::complex(const complex& b){
     this->imag = b.imag;
 }
 
-complex complex::operator +(const complex& b){
+complex operator +(const complex& a, const complex& b){
     complex tmp;
-    tmp.real = this->real + b.real;
-    tmp.imag = this->imag + b.imag;
+    tmp.real = a.real + b.real;
+    tmp.imag = a.imag + b.imag;
     return tmp;
 }
 
-complex operator +(const float a, const complex& b){
+complex operator -(const complex& a, const complex& b){
     complex tmp;
-    tmp.real = a + b.real;
-    tmp.imag = b.imag;
+    tmp.real = a.real - b.real;
+    tmp.imag = a.imag - b.imag;
     return tmp;
 }
 
-complex complex::operator -(const complex& b){
+complex operator *(const complex& a, const complex& b){
     complex tmp;
-    tmp.real = this->real - b.real;
-    tmp.imag = this->imag - b.imag;
+    tmp.real = (a.real * b.real) - (a.imag * b.imag);
+    tmp.imag = (a.imag * b.real) + (a.real * b.imag);
     return tmp;
 }
 
-complex operator -(const float a, const complex& b){
-    complex tmp;
-    tmp.real = a - b.real;
-    tmp.imag = b.imag;
-    return tmp;
-}
-
-
-complex complex::operator *(const complex& b){
-    complex tmp;
-    tmp.real = (real * b.real) - (imag * b.imag);
-    tmp.imag = (imag * b.real) + (real * b.imag);
-    return tmp;
-}
-
-complex operator *(const float a, const complex& b){
-    complex tmp;
-    tmp.real = a * b.real;
-    tmp.imag = a * b.imag;
-    return tmp;
-}
-
-complex complex::operator /(const complex& b){
-    float div=(b.real*b.real) + (b.imag*b.imag);
-    complex tmp;
-    tmp.real=(real*b.real)+(imag*b.imag);
-    tmp.real/=div;
-    tmp.imag=(imag*b.real)-(real*b.imag);
-    tmp.imag/=div;
-    return tmp;
-}
-
-complex operator /(float a, const complex& b){
+complex operator /(const complex& a, const complex& b){
+    /*
     complex tmp_a;
     complex tmp_b = b;
     tmp_a = a * tmp_b.getconj();
     tmp_b = tmp_b * tmp_b.getconj();
     return (tmp_a / tmp_b);
+    */
+    float div = (b.real * b.real) + (b.imag * b.imag);
+    complex tmp;
+    tmp.real = (a.real*b.real) + (a.imag*b.imag);
+    tmp.real /= div;
+    tmp.imag = (a.imag * b.real) - (a.real * b.imag);
+    tmp.imag /= div;
+    return tmp;
 }
 
 complex& complex::operator +=(const complex& b){

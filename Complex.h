@@ -8,14 +8,14 @@ private:
 public:
     complex(float r=0.0f,float im=0.0f);
     complex(const complex&);
-    complex operator +(const complex&);
-    friend complex operator +(const float, const complex&);
-    complex operator -(const complex&);
-    friend complex operator -(const float, const complex&);
-    complex operator *(const complex&);
-    friend complex operator *(const float, const complex&);
-    complex operator /(const complex&);
-    friend complex operator /(const float, const complex&);
+    //complex operator +(const complex&);
+    friend complex operator +(const complex&, const complex&);
+    //complex operator -(const complex&);
+    friend complex operator -(const complex&, const complex&);
+    //complex operator *(const complex&);
+    friend complex operator *(const complex&, const complex&);
+    //complex operator /(const complex&);
+    friend complex operator /(const complex&, const complex&);
     complex& operator +=(const complex&);
     complex& operator -=(const complex&);
     complex& operator *=(const complex&);
