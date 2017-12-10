@@ -36,6 +36,12 @@ int main(){
     std::cout<<"t3 += t1: "<<t3<<std::endl;
     t3 -= t1;
     std::cout<<"t3 -= t1: "<<t3<<std::endl;
+    t3 *= t1;
+    std::cout<<"t3 *= t1: "<<t3<<std::endl;
+    t3 = t1;
+    t3 /= t2;
+    std::cout<<"t3 /= t2: "<<t3<<std::endl;
+    t3 = t1;
 
     std::cout<<std::endl<<"CRITICAL assignments tests:"<<std::endl<<std::endl;
     std::cout<<"t1: "<<t1<<std::endl;
@@ -59,20 +65,32 @@ int main(){
     std::cout<<std::endl<<"math op. tests:"<<std::endl<<std::endl;
     t4 = t1 + ct1;
     std::cout<<"t1 + ct1: "<<t4<<std::endl;
-    t4 = t1 - ct1;
-    std::cout<<"t1 - ct1: "<<t4<<std::endl;
     t4 = t1 + 10;
     std::cout<<"t1 + 10: "<<t4<<std::endl;
+    t4 = 10 + t1;
+    std::cout<<"10 + t1: "<<t4<<std::endl;
+    t4 = t1 - ct1;
+    std::cout<<"t1 - ct1: "<<t4<<std::endl;
     t4 = t1 - 10;
     std::cout<<"t1 - 10: "<<t4<<std::endl;
-    t4 = 10 + t1;
-    std::cout<<"t1 + 10: "<<t4<<std::endl;
     t4 = 10 - t1;
-    std::cout<<"t1 - 10: "<<t4<<std::endl;
+    std::cout<<"10 - t1: "<<t4<<std::endl;
+    t4 = t1 * ct1;
+    std::cout<<"t1 * ct1: "<<t4<<std::endl;
+    t4 = t1 * 10;
+    std::cout<<"t1 * 10: "<<t4<<std::endl;
+    t4 = 10 * t1;
+    std::cout<<"10 * t1: "<<t4<<std::endl;
+    t4 = t1 / t2;
+    std::cout<<"t1 / t2: "<<t4<<std::endl;
+    t4 = t1 / 10;
+    std::cout<<"t1 / 10: "<<t4<<std::endl;
+    t4 = 10 / t2;
+    std::cout<<"10 / t2: "<<t4<<std::endl;
 
     std::cout<<std::endl<<"other tests:"<<std::endl<<std::endl;
     std::cout<<"t1 modulus: "<<t1.getmod()<<std::endl<<std::endl;
-    std::cout<<"t1 test: "<<t1.test()<<std::endl<<std::endl;
-    std::cout<<"test test: "<<test.test()<<std::endl<<std::endl;
+    std::cout<<"t1 argument: "<<t1.getarg()<<std::endl<<std::endl;
+    std::cout<<"test argument: "<<test.getarg()<<std::endl<<std::endl;
     return 0;
 }

@@ -20,6 +20,13 @@ complex complex::operator +(const complex& b){
     return tmp;
 }
 
+complex operator +(const float a, const complex& b){
+    complex tmp;
+    tmp.real = a + b.real;
+    tmp.imag = b.imag;
+    return tmp;
+}
+
 complex complex::operator -(const complex& b){
     complex tmp;
     tmp.real = this->real - b.real;
@@ -27,15 +34,44 @@ complex complex::operator -(const complex& b){
     return tmp;
 }
 
-complex complex::operator *(const complex& b){
+complex operator -(const float a, const complex& b){
     complex tmp;
-    //TODO
+    tmp.real = a - b.real;
+    tmp.imag = b.imag;
     return tmp;
 }
-complex complex::operator /(const complex& b){
+
+
+complex complex::operator *(const complex& b){
     complex tmp;
-    //TODO
+    tmp.real = (real * b.real) - (imag * b.imag);
+    tmp.imag = (imag * b.real) + (real * b.imag);
     return tmp;
+}
+
+complex operator *(const float a, const complex& b){
+    complex tmp;
+    tmp.real = a * b.real;
+    tmp.imag = a * b.imag;
+    return tmp;
+}
+
+complex complex::operator /(const complex& b){
+    float div=(b.real*b.real) + (b.imag*b.imag);
+    complex tmp;
+    tmp.real=(real*b.real)+(imag*b.imag);
+    tmp.real/=div;
+    tmp.imag=(imag*b.real)-(real*b.imag);
+    tmp.imag/=div;
+    return tmp;
+}
+
+complex operator /(float a, const complex& b){
+    complex tmp_a;
+    complex tmp_b = b;
+    tmp_a = a * tmp_b.getconj();
+    tmp_b = tmp_b * tmp_b.getconj();
+    return (tmp_a / tmp_b);
 }
 
 complex& complex::operator +=(const complex& b){
@@ -50,12 +86,25 @@ complex& complex::operator -=(const complex& b){
     return *this;
 }
 
-complex complex::operator *=(const complex& b){
-    //TODO
+complex& complex::operator *=(const complex& b){
+    complex tmp;
+    tmp.real = (real * b.real) - (imag * b.imag);
+    tmp.imag = (imag * b.real) + (real * b.imag);
+    this->real = tmp.real;
+    this->imag = tmp.imag;
+    return *this;
 }
 
-complex complex::operator /=(const complex& b){
-    //TODO
+complex& complex::operator /=(const complex& b){
+    float div=(b.real*b.real) + (b.imag*b.imag);
+    complex tmp;
+    tmp.real=(real*b.real)+(imag*b.imag);
+    tmp.real/=div;
+    tmp.imag=(imag*b.real)-(real*b.imag);
+    tmp.imag/=div;
+    this->real = tmp.real;
+    this->imag = tmp.imag;
+    return *this;
 }
 
 void complex::operator =(complex b){
@@ -84,8 +133,15 @@ float complex::getmod(){
     return z;
 }
 
-float complex::test(){
+float complex::getarg(){
     float z;
     z = atan2(getimag(), getreal());
     return z;
+}
+
+complex complex::getconj(){
+    complex tmp;
+    tmp.real=this->real;
+    tmp.imag=this->imag * -1;
+    return tmp;
 }
