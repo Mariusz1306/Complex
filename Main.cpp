@@ -10,6 +10,7 @@ int main(){
     complex ct2(t2);
     complex t3;
     complex t4(-2);
+    complex test;
     std::cout<<"t1: "<<t1<<std::endl;
     std::cout<<"t2: "<<t2<<std::endl;
     std::cout<<"t3: "<<t3<<std::endl;
@@ -37,19 +38,41 @@ int main(){
     std::cout<<"t3 -= t1: "<<t3<<std::endl;
 
     std::cout<<std::endl<<"CRITICAL assignments tests:"<<std::endl<<std::endl;
-    t3 += t1;
-    std::cout<<"t3 += t1: "<<t3<<std::endl;
-    t3 += t1;
-    std::cout<<"t3 += t1: "<<t3<<std::endl;
-    t3 -= t1;
-    t3 -= t1;
-    t3 += t1 += t1;
-    std::cout<<"t3 += t1 += t1: "<<t3<<std::endl;
+    std::cout<<"t1: "<<t1<<std::endl;
+    std::cout<<"ct1: "<<ct1<<std::endl;
+    std::cout<<"t3: "<<t3<<std::endl;
+    t3 += ct1 += t1;
+    std::cout<<"t3 += ct1 += t1: "<<t3<<std::endl;
+    ct1 = t1;
+    t3 = t1;
+
+    std::cout<<std::endl;
+
+    std::cout<<"t1: "<<t1<<std::endl;
+    std::cout<<"ct1: "<<ct1<<std::endl;
+    std::cout<<"t3: "<<t3<<std::endl;
+    t3 -= ct1 -= t1;
+    std::cout<<"t3 -= ct1 -= t1: "<<t3<<std::endl;
+    ct1 = t1;
+    t3 = t1;
 
     std::cout<<std::endl<<"math op. tests:"<<std::endl<<std::endl;
-    t4 = t1 + t3;
-    std::cout<<"t1 + t3: "<<t4<<std::endl;
-    t4 = t1 - t3;
-    std::cout<<"t1 - t3: "<<t4<<std::endl;
+    t4 = t1 + ct1;
+    std::cout<<"t1 + ct1: "<<t4<<std::endl;
+    t4 = t1 - ct1;
+    std::cout<<"t1 - ct1: "<<t4<<std::endl;
+    t4 = t1 + 10;
+    std::cout<<"t1 + 10: "<<t4<<std::endl;
+    t4 = t1 - 10;
+    std::cout<<"t1 - 10: "<<t4<<std::endl;
+    t4 = 10 + t1;
+    std::cout<<"t1 + 10: "<<t4<<std::endl;
+    t4 = 10 - t1;
+    std::cout<<"t1 - 10: "<<t4<<std::endl;
+
+    std::cout<<std::endl<<"other tests:"<<std::endl<<std::endl;
+    std::cout<<"t1 modulus: "<<t1.getmod()<<std::endl<<std::endl;
+    std::cout<<"t1 test: "<<t1.test()<<std::endl<<std::endl;
+    std::cout<<"test test: "<<test.test()<<std::endl<<std::endl;
     return 0;
 }

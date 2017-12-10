@@ -12,8 +12,8 @@ public:
     complex operator -(const complex&);
     complex operator *(const complex&);
     complex operator /(const complex&);
-    complex operator +=(const complex&);
-    complex operator -=(const complex&);
+    complex& operator +=(const complex&);
+    complex& operator -=(const complex&);
     complex operator *=(const complex&);
     complex operator /=(const complex&);
     void operator =(complex);
@@ -21,5 +21,7 @@ public:
     friend std::ostream& operator <<(std::ostream &s, complex &b);
     float getreal();
     float getimag();
+    float getmod(); //amplituda
+    float test();
     //funkcje zwracaj¹ce amplitudê i fazê
 };

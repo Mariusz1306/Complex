@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
 #include "complex.h"
 
 complex::complex(float r,float im){
@@ -37,14 +38,16 @@ complex complex::operator /(const complex& b){
     return tmp;
 }
 
-complex complex::operator +=(const complex& b){
-    this->real = this->real + b.real;
-    this->imag = this->imag + b.imag;
+complex& complex::operator +=(const complex& b){
+    this->real += b.real;
+    this->imag += b.imag;
+    return *this;
 }
 
-complex complex::operator -=(const complex& b){
-    this->real = this->real - b.real;
-    this->imag = this->imag - b.imag;
+complex& complex::operator -=(const complex& b){
+    this->real -= b.real;
+    this->imag -= b.imag;
+    return *this;
 }
 
 complex complex::operator *=(const complex& b){
@@ -72,4 +75,17 @@ float complex::getreal(){
 
 float complex::getimag(){
     return imag;
+}
+
+float complex::getmod(){
+    float z;
+    z = (real * real) + (imag * imag);
+    z = sqrt(z);
+    return z;
+}
+
+float complex::test(){
+    float z;
+    z = atan2(getimag(), getreal());
+    return z;
 }
